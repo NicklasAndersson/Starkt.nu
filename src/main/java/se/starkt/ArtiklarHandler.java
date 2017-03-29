@@ -94,39 +94,56 @@ public class ArtiklarHandler extends DefaultHandler {
             Artikel artikel = (Artikel) objectStack.peek();
             artikel.setVarugrupp(value);
         } else if ("typ".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setTyp(value);
         } else if ("stil".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setStil(value);
         } else if ("forpackning".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setForpackning(value);
         } else if ("forslutning".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setForslutning(value);
         } else if ("ursprung".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setUrsprung(value);
         } else if ("ursprunglandnamn".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setUrsprunglandnamn(value);
         } else if ("producent".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setProducent(value);
         } else if ("leverantor".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setLeverantor(value);
         } else if ("argang".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setArgang(value);
         } else if ("provadargang".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setProvadargang(value);
         } else if ("alkoholhalt".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setAlkoholhalt(value);
         } else if ("sortiment".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setSortiment(value);
         } else if ("sortimentText".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setSortimentText(value);
         } else if ("ekologisk".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setEkologisk(Integer.parseInt(value));
         } else if ("etiskt".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setEtiskt(Integer.parseInt(value));
         } else if ("koscher".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setKoscher(Integer.parseInt(value));
         } else if ("ravarorBeskrivning".equalsIgnoreCase(currentElement())) {
-
+            Artikel artikel = (Artikel) objectStack.peek();
+            artikel.setRavarorBeskrivning(value);
         }
 
 
