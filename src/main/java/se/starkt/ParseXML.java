@@ -19,7 +19,7 @@ public class ParseXML {
             SAXParser saxParser = factory.newSAXParser();
 
             ArtiklarHandler handler = new ArtiklarHandler();
-            list = handler.artiklar;
+            list = handler.getArtiklar();
 
             saxParser.parse("20170323.xml", handler);
 
