@@ -39,4 +39,18 @@ public class Artikel {
     Integer etiskt;
     Integer koscher;
     String ravarorBeskrivning;
+
+    public BigDecimal getAlkoholhaltAmount(){
+        String amount = alkoholhalt.substring(0,alkoholhalt.length()-1);
+        return new BigDecimal(amount);
+    }
+
+    public BigDecimal getMlAlkohol(){
+        return volymiml;
+    }
+
+    public BigDecimal getAlkoholperkrona(){
+
+    }
+
 }

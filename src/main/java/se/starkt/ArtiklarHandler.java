@@ -6,7 +6,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -16,7 +15,7 @@ import java.util.Stack;
  */
 public class ArtiklarHandler extends DefaultHandler {
     private @Getter
-    ArrayList<Artikel> artiklar = new ArrayList<Artikel>(18737);
+    Artiklar artiklar = new Artiklar();;
 
     //As we read any XML element we will push that in this stack
     private Stack elementStack = new Stack();
@@ -148,6 +147,8 @@ public class ArtiklarHandler extends DefaultHandler {
             } else if ("ravarorBeskrivning".equalsIgnoreCase(currentElement())) {
                 Artikel artikel = (Artikel) objectStack.peek();
                 artikel.setRavarorBeskrivning(value);
+            } else if ("skapad-tid".equalsIgnoreCase(currentElement())){
+                artiklar.setSkapadTid(value);
             }
 
         }

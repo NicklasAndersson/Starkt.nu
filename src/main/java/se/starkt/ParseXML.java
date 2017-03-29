@@ -2,14 +2,13 @@ package se.starkt;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.util.ArrayList;
 
 
 public class ParseXML {
 
 
     public static void main(String argv[]) {
-        ArrayList<Artikel> list = null;
+        Artiklar artiklar = null;
         long starttime = System.currentTimeMillis();
         System.out.println("Start " + starttime);
 
@@ -19,7 +18,7 @@ public class ParseXML {
             SAXParser saxParser = factory.newSAXParser();
 
             ArtiklarHandler handler = new ArtiklarHandler();
-            list = handler.getArtiklar();
+            artiklar = handler.getArtiklar();
 
             saxParser.parse("20170323.xml", handler);
 
@@ -27,7 +26,8 @@ public class ParseXML {
             e.printStackTrace();
         }
         System.out.println("Done " + System.currentTimeMillis() + " Diff " + (System.currentTimeMillis() - starttime));
-        System.out.println(list.size());
+        System.out.println(artiklar.antal());
+        System.out.println(artiklar.getSkapadTid());
         /*for (Artikel a : list) {
             System.out.println(a);
         }*/
