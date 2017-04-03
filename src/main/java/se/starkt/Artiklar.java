@@ -12,8 +12,12 @@ import java.util.ArrayList;
  * @author nicklas on 2017-03-29.
  */
 public class Artiklar {
+
+    /**
+     * The file usually contains ~17000 items
+     */
     private @Getter @NonNull
-    ArrayList<Artikel> artiklar = new ArrayList<Artikel>(10000);
+    ArrayList<Artikel> artiklar = new ArrayList<Artikel>(18000);
 
     private @Getter @Setter
     String skapadTid;

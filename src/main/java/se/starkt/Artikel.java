@@ -40,17 +40,26 @@ public class Artikel {
     Integer koscher;
     String ravarorBeskrivning;
 
-    public BigDecimal getAlkoholhaltAmount(){
-        String amount = alkoholhalt.substring(0,alkoholhalt.length()-1);
-        return new BigDecimal(amount);
+    public BigDecimal getAlkoholhaltAmount() {
+        String amount = alkoholhalt.substring(0, alkoholhalt.length() - 1);
+        BigDecimal amt = new BigDecimal(amount);
+        if (!amt.equals(BigDecimal.ZERO)) {
+            return amt.divide(new BigDecimal(100), BigDecimal.ROUND_HALF_UP);
+        }
+
+        return BigDecimal.ZERO;
     }
 
-    public BigDecimal getMlAlkohol(){
-        return volymiml;
+    public BigDecimal getMlAlkohol() {
+        return volymiml.multiply(getAlkoholhaltAmount());
     }
 
-    public BigDecimal getAlkoholperkrona(){
+    public BigDecimal getAlkoholperkrona() {
+        if (!getMlAlkohol().equals(BigDecimal.ZERO) && !prisinklmoms.equals(BigDecimal.ZERO)) {
+            return getMlAlkohol().divide(prisinklmoms, BigDecimal.ROUND_HALF_UP);
+        }
 
+        return BigDecimal.ZERO;
     }
 
 }
