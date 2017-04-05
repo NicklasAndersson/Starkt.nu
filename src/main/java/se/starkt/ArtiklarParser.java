@@ -6,6 +6,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -18,9 +19,12 @@ import java.util.Stack;
  *
  * @author nicklas on 2017-03-28.
  */
-public class ArtiklarHandler extends DefaultHandler {
+public class ArtiklarParser extends DefaultHandler {
     private @Getter
-    Artiklar artiklar = new Artiklar();;
+    ArrayList<Artikel> artiklar = new ArrayList<>(18000); //Typical size of xml
+
+    private @Getter
+    String setSkapadTid;
 
     //As we read any XML element we will push that in this stack
     private Stack elementStack = new Stack();
@@ -145,7 +149,7 @@ public class ArtiklarHandler extends DefaultHandler {
             Artikel artikel = (Artikel) objectStack.peek();
             artikel.setRavarorBeskrivning(value);
         } else if ("skapad-tid".equalsIgnoreCase(currentElement())){
-            artiklar.setSkapadTid(value);
+            setSkapadTid = new String(value);
         }
 
         elementStack.pop();
