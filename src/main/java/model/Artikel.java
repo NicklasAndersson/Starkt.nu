@@ -1,7 +1,12 @@
-package se.starkt;
+package model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
@@ -10,15 +15,30 @@ import java.math.BigDecimal;
  * @author nicklas on 2017-03-23.
  */
 @Data
+@Entity
 public class Artikel {
+    @JsonView(DataTablesOutput.View.class)
+    @Id
     Long nr;
+
     Long artikelid;
     Long varnummer;
+
+    @JsonView(DataTablesOutput.View.class)
     String namn;
+
+    @JsonView(DataTablesOutput.View.class)
     String namn2;
+
+    @JsonView(DataTablesOutput.View.class)
     BigDecimal prisinklmoms;
+
+    @JsonView(DataTablesOutput.View.class)
     BigDecimal volymiml;
+
+    @JsonView(DataTablesOutput.View.class)
     BigDecimal prisPerLiter;
+
     String saljstart;
     Integer utgått;
     String varugrupp;
@@ -38,7 +58,13 @@ public class Artikel {
     Integer ekologisk;
     Integer etiskt;
     Integer koscher;
+
+    @Column(length = 1000)
     String ravarorBeskrivning;
+
+    public Artikel() {
+        super();
+    }
 
     public BigDecimal getAlkoholhaltAmount() {
         String amount = alkoholhalt.substring(0, alkoholhalt.length() - 1);
@@ -54,6 +80,7 @@ public class Artikel {
         return volymiml.multiply(getAlkoholhaltAmount());
     }
 
+    @JsonView(DataTablesOutput.View.class)
     public BigDecimal getAlkoholperkrona() {
         if (!getMlAlkohol().equals(BigDecimal.ZERO) && !prisinklmoms.equals(BigDecimal.ZERO)) {
             return getMlAlkohol().divide(prisinklmoms, BigDecimal.ROUND_HALF_UP);

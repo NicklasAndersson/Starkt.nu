@@ -3,8 +3,8 @@ package se.starkt.service;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import model.Artikel;
 import org.springframework.stereotype.Service;
-import se.starkt.Artikel;
 import se.starkt.ArtiklarParser;
 
 import javax.xml.parsers.SAXParser;
@@ -49,7 +49,6 @@ public class ArtiklarService {
             artiklar = parser.getArtiklar();
         }
     }
-
 
     public Artikel getArtikel(Long id) {
         for (Artikel a : artiklar) {

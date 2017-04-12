@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>starkt.nu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"
+          integrity="sha384-YcTv91pbdpZ4It88TK5bVHIGTuPqoSi0CpPF9UA9eRicGHEJ3lpQZajpytN4rLkp" crossorigin="anonymous"/>
+
+
+</head>
+<body>
+<table id="artiklar" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>NR</th>
+        <th>NAMN</th>
+        <th>NAMN2</th>
+        <th>PRISINKLMOMS</th>
+        <th>VOLYMIML</th>
+        <th>PRISPERLITER</th>
+        <th>ALKOHOLPERKRONA</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>NR</th>
+        <th>NAMN</th>
+        <th>NAMN2</th>
+        <th>PRISINKLMOMS</th>
+        <th>VOLYMIML</th>
+        <th>PRISPERLITER</th>
+        <th>ALKOHOLPERKRONA</th>
+    </tr>
+    </tfoot>
+</table>
+<script src="https://code.jquery.com/jquery-1.12.4.js"
+        integrity="sha384-KcyRSlC9FQog/lJsT+QA8AUIFBgnwKM7bxm7/YaX+NTr4D00npYawrX0h+oXI3a2"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"
+        integrity="sha384-BpOQ55RA3arDUEP5boNauNeeKbuCH9IAzxHZTwHM+BKw2N09+Wep2yWWyvnE5eZl"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        th:src="@{/lib/jquery.spring-friendly.js}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#artiklar').DataTable({
+            "serverSide": true,
+            "ajax": "artiklar",
+            columns: [
+                {
+                    data: "nr"
+                }, {
+                    data: "namn"
+                }, {
+                    data: "namn2"
+                }, {
+                    data: "prisinklmoms"
+                }, {
+                    data: "volymiml"
+                }, {
+                    data: "prisPerLiter"
+                }, {
+                    data: "alkoholperkrona"
+                }]
+        })
+    });
+</script>
+</body>
+</html>
