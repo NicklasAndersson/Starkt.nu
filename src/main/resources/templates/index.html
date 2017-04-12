@@ -4,50 +4,70 @@
     <title>starkt.nu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"
-          integrity="sha384-YcTv91pbdpZ4It88TK5bVHIGTuPqoSi0CpPF9UA9eRicGHEJ3lpQZajpytN4rLkp" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/scroller/1.4.2/css/scroller.bootstrap.min.css"/>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/scroller/1.4.2/js/dataTables.scroller.min.js"></script>
+
+    <script type="text/javascript" th:src="@{/lib/jquery.spring-friendly.js}"></script>
 </head>
 <body>
-<table id="artiklar" class="display" cellspacing="0" width="100%">
+<table id="artiklar" class="table table-striped" width="100%">
     <thead>
     <tr>
         <th>NR</th>
         <th>NAMN</th>
-        <th>NAMN2</th>
-        <th>PRISINKLMOMS</th>
-        <th>VOLYMIML</th>
-        <th>PRISPERLITER</th>
-        <th>ALKOHOLPERKRONA</th>
+        <th></th>
+        <th>TYP</th>
+        <th>PRIS INKL MOMS</th>
+        <th>VOLYM I ML</th>
+        <th>PRIS PER LITER</th>
+        <th>ALKOHOL PER KRONA</th>
+        <th>ALKOHOLHALT</th>
     </tr>
     </thead>
     <tfoot>
     <tr>
         <th>NR</th>
         <th>NAMN</th>
-        <th>NAMN2</th>
-        <th>PRISINKLMOMS</th>
-        <th>VOLYMIML</th>
-        <th>PRISPERLITER</th>
-        <th>ALKOHOLPERKRONA</th>
+        <th></th>
+        <th>TYP</th>
+        <th>PRIS INKL MOMS</th>
+        <th>VOLYM I ML</th>
+        <th>PRIS PER LITER</th>
+        <th>ALKOHOL PER KRONA</th>
+        <th>ALKOHOLHALT</th>
     </tr>
     </tfoot>
 </table>
-<script src="https://code.jquery.com/jquery-1.12.4.js"
-        integrity="sha384-KcyRSlC9FQog/lJsT+QA8AUIFBgnwKM7bxm7/YaX+NTr4D00npYawrX0h+oXI3a2"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"
-        integrity="sha384-BpOQ55RA3arDUEP5boNauNeeKbuCH9IAzxHZTwHM+BKw2N09+Wep2yWWyvnE5eZl"
-        crossorigin="anonymous"></script>
 
-<script type="text/javascript"
-        th:src="@{/lib/jquery.spring-friendly.js}"></script>
 
 <script>
     $(document).ready(function () {
-        $('#artiklar').DataTable({
+
+        // Setup - add a text input to each footer cell
+        $('#artiklar tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="Sök ' + title + '" />');
+        });
+
+
+        var table = $('#artiklar').DataTable({
             "serverSide": true,
             "ajax": "artiklar",
+            scrollY: 600,
+            deferRender: true,
+            scroller: true,
+
             columns: [
                 {
                     data: "nr"
@@ -56,6 +76,8 @@
                 }, {
                     data: "namn2"
                 }, {
+                    data: "typ"
+                }, {
                     data: "prisinklmoms"
                 }, {
                     data: "volymiml"
@@ -63,9 +85,26 @@
                     data: "prisPerLiter"
                 }, {
                     data: "alkoholperkrona"
+                }, {
+                    data: "alkoholhalt"
                 }]
-        })
+        });
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+
     });
+
 </script>
 </body>
 </html>
