@@ -1,11 +1,4 @@
 {
   "name": "Systembolaget API",
-  "description": "",
-  "repository": "https://github.com/NicklasAndersson/Starkt.nu",
-  "logo": "",
-  "keywords": [
-    "Systembolaget",
-    "billigt",
-    "test"
-  ]
+  "repository": "https://github.com/NicklasAndersson/Starkt.nu"
 }
