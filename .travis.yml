@@ -9,3 +9,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: NicklasAndersson/Starkt.nu
+    tags: true
