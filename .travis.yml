@@ -4,7 +4,7 @@ deploy:
   api_key:
     secure: kFKHS064DcU+/mwZw1cq7JCSHkoIptuwS7Kfo6LEQceTlmeRws5By4xdvMgvT63JBsXzrk/4ScFvWad1RfpbzAId2HZBzdY5eoMFcvvORsn4UywsR4qysC+phbYWH0rL3nwGTck1l2DUUQFnbO5zCjKyPqjp/Gk5CnG0t5TAisNp+/VGLpkjMsA38duD1MOr5E5CVjKHCSBZQy4zOTuJO/c8izENI5onOf2UHVeRScgYutvhxUaTcD6MdXy9RCxyqgAOu4Ar6b87ik9Ltjvr9TZ28uT5ZugtPwDXnNzf1R4Nbr6q5I7qs7VmPTGmwY6d4zM/NI13ZJtd9RpC1dROhJO5RXy4h4CndMMw2japO6Gt+CoISR5UmKXD/T9WUz3x9h25JZAPlZyaUF1TMejd1dpA40tU6XZPJjEv9KB1sWQSFUcGSligZyKOhZGzXHlqyAKlaoptmH3a+4UkQBFFYVjpcHmdt29HjDhdupA9sQ4yYZjv31NrCR8CMEgzkQVd/U1qo8ie/I/aMrfKC3L1ptlgv/rgE55uOecvBbIfAHrPNPUPu8b1YH4/07x8RZddlMVO++Lm9Bqb2rI5akVwVZgP9/0oP9odzZZVhIIHmJS1XUzd5mqVXPFeFBZ1vneD3vQoUZwDk7BR8FoWAo3JUWmtqQUUpoqJZ4A/odW6APs=
   file_glob: true
-  file: target/systembolaget*.jar
+  file: target/systembolaget.jar
   skip_cleanup: true
   on:
     repo: NicklasAndersson/Starkt.nu
