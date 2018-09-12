@@ -9,10 +9,10 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author nicklas on 2017-03-29.
  */
 @RunWith(SpringRunner.class)
-class TestArtikel {
+public class TestArtikel {
 
     @Test
-    void testProcentAmunt(){
+    public void testProcentAmunt(){
 
     }
 }
