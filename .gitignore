@@ -17,3 +17,5 @@ buildNumber.properties
 SystembolagetParser.iml
 ParseXML.iml
 
+target/generated-sources/
+target/generated-test-sources/
