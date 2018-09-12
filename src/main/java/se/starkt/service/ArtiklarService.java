@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -16,11 +17,6 @@ import model.Artikel;
 import org.springframework.stereotype.Service;
 import se.starkt.ArtiklarParser;
 
-/**
- * Created by
- *
- * @author nicklas on 2017-03-29.
- */
 @Service
 @CommonsLog
 public class ArtiklarService {

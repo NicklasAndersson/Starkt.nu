@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
 
 /**
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
  *
  * @author nicklas on 2017-03-29.
  */
-@RunWith(JUnitPlatform.class)
+@RunWith(SpringRunner.class)
 class TestArtikel {
 
     @Test

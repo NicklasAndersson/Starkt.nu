@@ -1,11 +1,11 @@
 package se.starkt.rest;
 
-import com.fasterxml.jackson.annotation.JsonView;
+
 import model.Artikel;
 import model.ArtikelDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,7 +14,6 @@ import se.starkt.service.ArtiklarRepository;
 import se.starkt.service.ArtiklarService;
 
 import javax.annotation.PostConstruct;
-import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -38,10 +37,10 @@ public class ArtikelController {
         return service.getArtikel(id);
     }
 
-    @JsonView(DataTablesOutput.View.class)
+
     @RequestMapping(value = "/artiklar", method = GET)
-    public DataTablesOutput<ArtikelDao> getArtiklar(@Valid DataTablesInput input) {
-        return repository.findAll(input);
+    public Page<ArtikelDao> getArtiklar(PageRequest pageRequest) {
+        return repository.findAll(pageRequest);
     }
 
     @PostConstruct
