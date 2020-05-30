@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,7 +12,7 @@ import java.math.BigDecimal;
  * @author nicklas on 2017-03-23.
  */
 @Data
-public class Artikel {
+public class Artikel implements Comparable<Artikel>{
 
     Long nr;
     Long artikelid;
@@ -56,6 +58,7 @@ public class Artikel {
         return volymiml.multiply(getAlkoholhaltAmount());
     }
 
+    @JsonProperty("apk")
     public BigDecimal getAlkoholperkrona() {
         if (!getMlAlkohol().equals(BigDecimal.ZERO) && !prisinklmoms.equals(BigDecimal.ZERO)) {
             return getMlAlkohol().divide(prisinklmoms, BigDecimal.ROUND_HALF_UP);
@@ -64,40 +67,11 @@ public class Artikel {
         return BigDecimal.ZERO;
     }
 
-    public ArtikelDao getDao() {
-        ArtikelDao toReturn = new ArtikelDao();
-
-        toReturn.nr = nr;
-        toReturn.artikelid = artikelid;
-        toReturn.varnummer = varnummer;
-        toReturn.namn = namn;
-        toReturn.namn2 = namn2;
-        toReturn.prisinklmoms = prisinklmoms;
-        toReturn.volymiml = volymiml;
-        toReturn.prisPerLiter = prisPerLiter;
-        toReturn.saljstart = saljstart;
-        toReturn.utgått = utgått;
-        toReturn.varugrupp = varugrupp;
-        toReturn.typ = typ;
-        toReturn.stil = stil;
-        toReturn.forpackning = forpackning;
-        toReturn.forslutning = forslutning;
-        toReturn.ursprung = ursprung;
-        toReturn.ursprunglandnamn = ursprunglandnamn;
-        toReturn.producent = producent;
-        toReturn.leverantor = leverantor;
-        toReturn.argang = argang;
-        toReturn.provadargang = provadargang;
-        toReturn.alkoholhalt = alkoholhalt;
-        toReturn.sortiment = sortiment;
-        toReturn.sortimentText = sortimentText;
-        toReturn.ekologisk = ekologisk;
-        toReturn.etiskt = etiskt;
-        toReturn.koscher = koscher;
-        toReturn.ravarorBeskrivning = ravarorBeskrivning;
-        toReturn.alkoholperkrona = getAlkoholperkrona();
-
-        return toReturn;
+    @Override
+    public int compareTo(Artikel o) {
+        if(getAlkoholperkrona() == null || o.getAlkoholperkrona() == null){
+            return 0;
+        }
+        return o.getAlkoholperkrona().compareTo(getAlkoholperkrona());
     }
-
 }

@@ -4,3 +4,4 @@ server:
 logging:
   level:
     ROOT: INFO
+    se.starkt: DEBUG
